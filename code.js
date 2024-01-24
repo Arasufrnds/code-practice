@@ -39,3 +39,20 @@ function outer(){
     }
     outer();
 
+//shalow copy
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+console.log(person);
+
+var newPerson = person;
+newPerson.nation = "Indian";
+console.log(newPerson); 
+
+//Deep copy
+const person1 = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+console.log(person1);
+
+var newPerson = JSON.parse(JSON.stringify(person1));
+newPerson.nation = "Indian";
+console.log(newPerson);
