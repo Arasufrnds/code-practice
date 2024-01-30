@@ -56,3 +56,35 @@ console.log(person1);
 var newPerson = JSON.parse(JSON.stringify(person1));
 newPerson.nation = "Indian";
 console.log(newPerson);
+
+
+//swap the array values;
+a=[10];
+b=[55];
+
+a=[b, b=a][0];
+console.log(a);
+
+
+//Duplicate the array and string
+let chars= [1,2,2,3,4,5,5,6,7];
+
+let unique = chars.filter((c,index)=>{
+return chars.indexOf(c) === index;
+})
+
+console.log(unique);
+
+//find the Duplicate in object
+const value =[
+    {id:1, name:"count"},
+    {id:1, name:"count1"},
+    {id:1, name:"count2"},
+    {id:1, name:"count"},
+    {id:1, name:"count"},
+    ]
+    
+    const unique1 =[...new Map(value.map((m)=>[m.id,m])).values()];
+    
+    console.log(unique1);
+
