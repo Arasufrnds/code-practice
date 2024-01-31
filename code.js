@@ -88,3 +88,27 @@ const value =[
     
     console.log(unique1);
 
+// call and apply method:
+
+var car = {brand:'ford', model:'2020'}
+
+function carInfo(ownerName){
+    console.log(ownerName + "My car is" + this.brand + "year" + this.year)
+}
+
+carInfo.call(car,'arasu');
+carInfo.apply(car, ['arasu']);
+
+
+//bind : its need an external finction for to bind the value in the function to get output, we using constructor function to achieve this.
+
+var car = {brand:'ford', model:'2020',
+
+carInfo:function(ownerName){
+    console.log(ownerName + ' '   +"My car is" + ' ' +this.brand + " "  +"year" + this.model)
+}
+}
+
+var carDetails = car.carInfo.bind(car, "Vivian"); 
+
+carDetails();
