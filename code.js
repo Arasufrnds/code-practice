@@ -11,7 +11,7 @@ function reverse(arr){
 
 // Reverse String without Reverse method:
 function reverse(str){
-    var output =[];
+    var output ='';
     for(let i=str.length-1; i>=0; i--){
     output+=str[i];
     }
@@ -42,7 +42,7 @@ function outer(){
 //shalow copy
 const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
 
-console.log(person);
+console.log("shallow value", person);
 
 var newPerson = person;
 newPerson.nation = "Indian";
@@ -51,7 +51,7 @@ console.log(newPerson);
 //Deep copy
 const person1 = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
 
-console.log(person1);
+console.log('Deep Value', person1);
 
 var newPerson = JSON.parse(JSON.stringify(person1));
 newPerson.nation = "Indian";
@@ -112,3 +112,40 @@ carInfo:function(ownerName){
 var carDetails = car.carInfo.bind(car, "Vivian"); 
 
 carDetails();
+
+
+///for in & for of:
+
+const digits = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+
+for (const index in digits) {
+  console.log(index);
+}
+
+const digits1 = [9, 8, 7, 6, 5, 5, 6, 7, 8, 9];
+
+for (const digit of digits1) {
+  console.log(digit);
+}
+
+//show the values greater than 18;
+const people = [
+    { name: "Alice", age: 22 },
+    { name: "Bob", age: 17 },
+    { name: "Charlie", age: 19 },
+    { name: "David", age: 15 },
+    { name: "Emma", age: 24 }
+  ];
+
+  person.forEach(person =>{
+    if(person.age>18){
+         console.log(`{person.name},{person.age}`)
+    }
+  })
+
+
+// find even in aray
+let arr = [1,2,3,4,5,3,5,6,7,8];
+
+let even = arr.filter(number => number % 2 === 0);
+console.log(even);
