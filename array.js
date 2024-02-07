@@ -31,6 +31,11 @@ let unique = chars.filter((c,index)=>{
 
 console.log(unique);
 
+//second method
+let array = [23, 1, 45, 1, 7, 9, 5, 2, 23];
+
+console.log([...new Set(array)]);
+
 // find even in aray (filter method)
 let arr = [1,2,3,4,5,3,5,6,7,8];
 
