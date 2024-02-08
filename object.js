@@ -87,3 +87,5 @@ console.log('Deep Value', person1);
 var newPerson = JSON.parse(JSON.stringify(person1));
 newPerson.nation = "Indian";
 console.log(newPerson);
+
+

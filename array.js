@@ -5,6 +5,10 @@ b=[55];
 a=[b, b=a][0];
 console.log(a);
 
+//create an arry and add the value (push)
+let given = [1,2,3,4,5];
+let value = given.push(6);
+console.log(given);
 
 // Reverse the Array:
 function reverse(arr){
