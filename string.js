@@ -26,3 +26,20 @@ for (let i=0; i < input.length; i++){
 let position = input.indexOf(input[i])-1;
 console.log(input[i] + "=" + position);
 }
+
+
+//add new value in string using(+);
+
+let greeting = "Hello, ";
+let name = "John";
+let punctuation = "!";
+
+let message = greeting + name + punctuation // "Hello, John!"
+  console.log(message);
+
+  let value = ",Arasu know about you"
+  let message1 = greeting + name + punctuation + value; // "Hello, John!"
+  console.log(message);
+     //or
+  let message2 = `${greeting}${name}${punctuation}${value}`; // "Hello, World!"
+  console.log(combinedString);

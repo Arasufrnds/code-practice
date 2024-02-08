@@ -37,8 +37,21 @@ let doubledChar = chars.map(number => number * 2);
 
 console.log(doubledChars);
 
+//add the value in arraylist at particular index; (splice method)
+let arrayList = [1, 2, 4, 5];
+let index = 2; // Index where you want to add the value
+let valueToAdd = 3;
+
+arrayList.splice(index, 0, valueToAdd);
+
+console.log(arrayList);
 
 
+//remove the value on the particular index (splice method)
+let values= ['a','b','c','d','e'];
+let remove = 2
+values.splice(remove, 1);  // t will remove c only becoz im giving 1 if I give 2 it removes c & d.
+console.log(values);
 
 //Duplicate the string (filter method)
 let chars= [1,2,2,3,4,5,5,6,7];

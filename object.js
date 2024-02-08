@@ -39,9 +39,9 @@ console.log(employeeNames);
 //find the Duplicate in object
 const value =[
     {id:1, name:"count"},
-    {id:1, name:"count1"},
-    {id:1, name:"count2"},
-    {id:1, name:"count"},
+    {id:2, name:"count1"},
+    {id:11, name:"count2"},
+    {id:12, name:"count"},
     {id:1, name:"count"},
 ];
 
@@ -89,3 +89,14 @@ newPerson.nation = "Indian";
 console.log(newPerson);
 
 
+
+
+// add the value in existing object:
+var employee ={
+    name: 'arasu',
+    age: 20
+}
+
+employee.mail = '123@gmail.com';  //method 1
+employee['mail'] = '123@gmail.com' // method2
+Object.assign(employee, {mail:'123@gmail.com', phone:'1234'});  //method 3
