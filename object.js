@@ -13,6 +13,14 @@ const people = [
     }
   })
 
+let age = [11,21,12,32,14,16];
+age.forEach(ages =>{
+    if(ages > 18){
+        console.log(ages);
+    }
+
+});
+
 //show the value of name alone in object (map method)
 const a = {  
     "employee": [  
