@@ -111,13 +111,61 @@ function example(){
 }
 example();
 
-    
+
+
+//shallow and deep copy:
+//shallow"
+const original = { a: 1, b: { c: 2 } };
+const shallowCopy = { ...original };
+
+shallowCopy.b.c = 3; // This will also change `original.b.c` to 3
+console.log(original);
+
+// Shallow copy example for an array
+const originalArray = [1, 2, [3, 4]];
+const shallowCopyArray = originalArray;
+
+shallowCopyArray[2][0] = 300;
+console.log(originalArray);
+
+//deep copy:
+const original1 = { a: 1, b: { c: 2 } };
+const deepCopy = JSON.parse(JSON.stringify(original1));
+
+deepCopy.b.c = 3;
+
+
+//terrinary operator:
+let age = 18;
+let vote = age >= 18 ? 'yes' : 'No';
+console.log(age);
 
 
 
+//spread operator in Array;
+let firstArray = [1, 2, 3];
+let secondArray = [4, 5, 6];
+let combinedArray = [...firstArray, ...secondArray];
+console.log(combinedArray);
+
+const object1 = { name: 'John' };
+const object2 = { age: 30 };
+const mergedObject = { ...object1, ...object2 };
+
+console.log(mergedObject);
 
 
+//rest operator:
+const [first, second, ...others] = [1, 2, 3, 4, 5];
+console.log(first); // Output: 1
+console.log(second); // Output: 2
+console.log(others); 
 
+
+const { name, aged, ...rest } = { name: 'John', aged: 30, city: 'New York', country: 'USA' };
+console.log(name); // Output: 'John'
+console.log(aged); // Output: 30
+console.log(rest);
 
 
 

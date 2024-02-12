@@ -45,7 +45,7 @@ const employeeNames = a.employee.map(employee => employee.name);
 console.log(employeeNames);
 
 //find the Duplicate in object
-const value =[
+const details =[
     {id:1, name:"count"},
     {id:2, name:"count1"},
     {id:11, name:"count2"},
@@ -53,7 +53,7 @@ const value =[
     {id:1, name:"count"},
 ];
 
-let same = Array.from(new Map(value.map((m)=> [m.name, m])).values());
+let same = Array.from(new Map(details.map((m)=> [m.name, m])).values());
 console.log(same);
 
 // call and apply method:

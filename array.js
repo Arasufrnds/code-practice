@@ -102,3 +102,24 @@ const digits1 = [9, 8, 7, 6, 5, 5, 6, 7, 8, 9];
 for (const digit of digits1) {
   console.log(digit);
 }
+
+
+//find second largest number in js:
+let arr2 =[2,5,6,75,7,8];
+
+let secondLargest = arr2.slice(0).sort(function(a,b) {return b-a})[1];
+console.log(secondLargest);
+
+///find largest number in array:
+let arr3 =[2,5,6,75,7,8];
+
+console.log(Math.max(...arr3));
+
+
+//show the number greater than 18
+let age = [38,56,34,11,32,15];
+age.forEach(person =>{
+    if(person  > 18){
+        console.log(person );
+    }
+})
