@@ -1,14 +1,4 @@
 
-//closer => inner function access outer variable
-function outer(){
-    var outerValue = "Im working";
-    
-    function inner(){
-    console.log(outerValue);
-    }
-    return inner();
-    }
-    outer();
 
 // boolean output
 var bar = true;
@@ -170,6 +160,41 @@ console.log(rest);
 
 
 
+//IIFE function with ES5 & ES6
+//ES6:
+for (let i = 0; i < 3; i++) {
+  setTimeout(function() {
+      console.log(i); // Correctly prints 0, 1, 2
+  }, 100);
+}
 
 
+//ES5:
+for (var i = 0; i < 3; i++) {
+  setTimeout(function() {
+      console.log(i); // Expectation: 0, then 1, then 2
+  }, 100);
+}
 
+
+//Inheritance
+class Employe{
+  constructor(name, id){
+   this.name =name;
+   this.id =id;
+  }
+
+  display(){
+    console.log(`Im working ${this.name} & ${this.id} and ${this.salary}`)
+  }
+}
+
+class supervisor extends Employe{
+  constructor(salary, name, id){
+    super(name, id);
+    this.salary = salary;
+  }
+}
+
+let value = new supervisor(5000, "walter", 15);
+value.display();

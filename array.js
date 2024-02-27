@@ -123,3 +123,24 @@ age.forEach(person =>{
         console.log(person );
     }
 })
+
+
+//using for loop to find second largest value;
+function secondBig(arr){
+  let largest = arr[0];
+  let second = -Infinity;
+  for(let i=1; i<arr.length; i++){
+  if (arr[i] > largest){
+  second = largest;
+  largest = arr[i];
+  } else if(arr[i] < largest && arr[i] > second){
+  second = arr[i];
+  }
+  }
+  return second;
+  
+  }
+  
+  const arra=[10,2,4,5,78,99];
+  const second = secondBig(arra);
+  console.log(second);
