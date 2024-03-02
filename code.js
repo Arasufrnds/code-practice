@@ -198,3 +198,35 @@ class supervisor extends Employe{
 
 let value = new supervisor(5000, "walter", 15);
 value.display();
+
+
+
+//call stacks:
+function firstFunction() {
+  secondFunction();
+  console.log('First function called');
+}
+
+function secondFunction() {
+  thirdFunction();
+  console.log('Second function called');
+}
+
+function thirdFunction() {
+  console.log('Third function called');
+}
+
+firstFunction();
+
+//max call stack exceed;
+function sayHello(){
+  return sayGoodbye();
+  }
+  
+  function sayGoodbye(){
+  return sayHello();
+  }
+  sayHello();
+  console.log(sayHello())
+
+

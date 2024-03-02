@@ -44,6 +44,7 @@ const a = {
 const employeeNames = a.employee.map(employee => employee.name);
 console.log(employeeNames);
 
+
 //find the Duplicate in object
 const details =[
     {id:1, name:"count"},
