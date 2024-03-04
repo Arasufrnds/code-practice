@@ -230,3 +230,28 @@ function sayHello(){
   console.log(sayHello())
 
 
+//find the mature
+const ages1 = [4, 11, 42, 14, 39];
+const mature1 = ages1.filter(age => {  
+  return age >= 5;
+});
+console.log(mature1);
+
+//2nd method:
+ages.forEach(age =>{
+  if(ages > 18){
+      console.log(age);
+  }
+
+});
+
+//3rd;
+let man= ages.filter(mature => mature > 18);
+console.log(man);
+
+//i need the output of *,**,*** like this in row
+var res = '';
+for(var i=0; i<7; i++){
+res+= '*';
+console.log(res)
+}

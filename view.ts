@@ -158,3 +158,145 @@ export class UserFamilyComponent {
     this.siblings.push(new FormControl(''));
   }
 }
+
+
+
+
+
+
+
+
+
+
+//Template Driven form:
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="user.name" name="name" required>
+    <div *ngIf="name.invalid && name.touched" class="error">   
+      Name is required.
+    </div>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="user.email" name="email" required>
+    <div *ngIf="email.invalid && email.touched" class="error">
+      Email is required.
+    </div>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="user.password" name="password" required minlength="6">
+    <div *ngIf="password.invalid && password.touched" class="error">
+      Password is required and must be at least 6 characters.
+    </div>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Register</button>
+</form>
+
+
+
+//TS:
+export class AppComponent {
+  user = {
+    name: '',
+    email: '',
+    password: ''
+  };
+
+  onSubmit(form: any) {
+    console.log('Form submitted:', form.value);
+  }
+}
+
+
+//css:
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+
+//local storage of set and get token:
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+
+  private readonly tokenKey: string = 'authToken';
+
+  constructor() { }
+
+  // Save the token
+  saveToken(token: string, useSessionStorage: boolean = false): void {
+    if (useSessionStorage) {
+      sessionStorage.setItem(this.tokenKey, token);
+    } else {
+      localStorage.setItem(this.tokenKey, token);
+    }
+  }
+
+  // Retrieve the token
+  getToken(useSessionStorage: boolean = false): string | null {
+    if (useSessionStorage) {
+      return sessionStorage.getItem(this.tokenKey);
+    } else {
+      return localStorage.getItem(this.tokenKey);
+    }
+  }
+
+  // Remove the token
+  removeToken(useSessionStorage: boolean = false): void {
+    if (useSessionStorage) {
+      sessionStorage.removeItem(this.tokenKey);
+    } else {
+      localStorage.removeItem(this.tokenKey);
+    }
+  }
+
+  // Check if the token exists
+  isLoggedIn(useSessionStorage: boolean = false): boolean {
+    return this.getToken(useSessionStorage) !== null;
+  }
+}
+
+
+//Ts file:
+import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+
+@Component({
+  selector: 'app-login',
+  template: `
+    <button (click)="login()">Login</button>
+  `
+})
+export class LoginComponent {
+
+  constructor(private authService: AuthService) {}
+
+  login(): void {
+    // Simulate a login and receive a token
+    const fakeToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
+
+    // Save the token in local storage
+    this.authService.saveToken(fakeToken);
+
+    // Or, to save the token in session storage, pass true as the second argument
+    // this.authService.saveToken(fakeToken, true);
+  }
+}
+
+logout(): void {
+  // Remove the token from local storage
+  this.authService.removeToken();
+
+  // Or, to remove the token from session storage, pass true as the argument
+  // this.authService.removeToken(true);
+}
