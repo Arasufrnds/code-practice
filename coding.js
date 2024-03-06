@@ -176,3 +176,19 @@ let value1 = [{name: "arasu", hidden: true},
 let fvalues1=value.filter(obj => !obj.hidden === true);
 
 console.log(fvalues1);
+
+
+//adding two different values;
+function add(a, b) {
+  if (typeof b !== 'undefined') {
+    return a + b;
+  } else {
+    return function(b) {
+      return a + b;
+    };
+  }
+}
+
+// Usage
+console.log(add(2, 3)); // Direct use
+console.log(add(2)(3));

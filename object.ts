@@ -34,3 +34,19 @@ class Calculator {
 
 console.log(Calculator.add(5, 3)); // Output: 8
 console.log(Calculator.subtract(10, 6));
+
+//creating class of student and fetch result:
+class student{
+    marks : number = 80;
+
+    getResult():string{
+        if(this.marks > 40){
+            return "pass";
+        }else{
+            return "fail";
+        }
+    }
+}
+
+var result = new student;
+console.log(result.getResult());

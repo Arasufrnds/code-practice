@@ -94,7 +94,11 @@ for (const index in digits) {
   console.log(index);
 }
 
+const colors = ["Red", "Green", "Blue"];
 
+for (const index in colors) {
+  console.log(index + ": " + colors[index]);
+}
 
 // for in return the index value position on the iteration
 const digits1 = [9, 8, 7, 6, 5, 5, 6, 7, 8, 9];
@@ -102,6 +106,14 @@ const digits1 = [9, 8, 7, 6, 5, 5, 6, 7, 8, 9];
 for (const digit of digits1) {
   console.log(digit);
 }
+
+//example of for of
+const greeting = "Hello";
+
+for (const character of greeting) {
+  console.log(character);
+}   
+
 
 
 //find second largest number in js:
@@ -144,3 +156,36 @@ function secondBig(arr){
   const arra=[10,2,4,5,78,99];
   const second = secondBig(arra);
   console.log(second);
+
+
+  //find all the missing values;
+  const ar = [22, 23, 25, 28, 48];
+
+  function missingArray(arr){
+  let missingValues = [];
+  
+  for(let i=0; i<arr.length; i++){
+     let start = arr[i];
+     let end = arr[i + 1];
+  
+  for(let j=start+1; j<end; j++){
+    missingValues.push(j);
+  }
+  }
+   return missingValues.length > 0 ? missingValues : 'missed';
+  }
+  
+  console.log(missingArray(ar));
+
+  //find missing array
+  function missingArray(arr){
+    var n = arr.length;
+    var total =((n+2) * (n+1))/2;
+    for(let i=0; i< n; i++){
+    total -=arr[i];
+    }
+    return total;
+    }
+    
+    const ex = [1,2,3,4];
+    console.log(missingArray(ex));

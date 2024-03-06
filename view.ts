@@ -300,3 +300,105 @@ logout(): void {
   // Or, to remove the token from session storage, pass true as the argument
   // this.authService.removeToken(true);
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///Refreshing the timeout token using http:
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, BehaviorSubject, catchError, filter, take, switchMap } from 'rxjs';
+import { AuthService } from './auth.service'; // Import your AuthService
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TokenRefreshService implements HttpInterceptor {
+
+  private refreshTokenInProgress = false;
+  private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
+  constructor(private authService: AuthService) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // Add your auth token to outgoing requests
+    const authToken = this.authService.getAuthToken();
+    req = this.addToken(req, authToken);
+
+    return next.handle(req).pipe(catchError(error => {
+      if (error instanceof HttpErrorResponse && error.status === 401) {
+        // Handle 401 errors
+        return this.handle401Error(req, next);
+      } else {
+        // Forward other errors
+        return throwError(() => error);
+      }
+    }));
+  }
+
+  private addToken(request: HttpRequest<any>, token: string) {
+    return request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+    if (!this.refreshTokenInProgress) {
+      this.refreshTokenInProgress = true;
+      this.refreshTokenSubject.next(null);
+
+      return this.authService.refreshToken().pipe(
+        switchMap((token: any) => {
+          this.refreshTokenInProgress = false;
+          this.refreshTokenSubject.next(token);
+          return next.handle(this.addToken(request, token));
+        }),
+        catchError((err) => {
+          this.refreshTokenInProgress = false;
+          this.authService.logout(); // or handle error accordingly
+          return throwError(() => err);
+        })
+      );
+    } else {
+      return this.refreshTokenSubject.pipe(
+        filter(token => token != null),
+        take(1),
+        switchMap(token => {
+          return next.handle(this.addToken(request, token));
+        })
+      );
+    }
+  }
+}
+
+
+///pasing 401 erroe:
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+
+  constructor(private router: Router) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // You might be adding your token here to outgoing requests
+    // ...
+
+    return next.handle(req).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error && error.status === 401) {
+          // Handle 401 errors (unauthorized) globally
+          // For example, redirect to a login page
+          // or show a modal asking the user to login again
+          console.error('Unauthorized request:', req.url);
+          // Assuming you have a method to log the user out
+          // this.authService.logout();
+          // Redirecting to the login page
+          this.router.navigate(['/login']);
+        }
+        
+        // Forward the error to be handled locally if needed
+        return throwError(() => error);
+      })
+    );
+  }
+}

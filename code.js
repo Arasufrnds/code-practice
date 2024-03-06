@@ -177,27 +177,7 @@ for (var i = 0; i < 3; i++) {
 }
 
 
-//Inheritance
-class Employe{
-  constructor(name, id){
-   this.name =name;
-   this.id =id;
-  }
 
-  display(){
-    console.log(`Im working ${this.name} & ${this.id} and ${this.salary}`)
-  }
-}
-
-class supervisor extends Employe{
-  constructor(salary, name, id){
-    super(name, id);
-    this.salary = salary;
-  }
-}
-
-let value = new supervisor(5000, "walter", 15);
-value.display();
 
 
 
@@ -255,3 +235,35 @@ for(var i=0; i<7; i++){
 res+= '*';
 console.log(res)
 }
+
+//output:
+let a = 1;
+let b = a++;
+
+console.log(a);
+console.log(b);
+
+
+//remove duplicate:
+const str = "big black bug bit a big black dog on his big black nose";
+
+const words = str.split(" ");
+const uniqueWords = new Set(words);
+const result = [...uniqueWords].join(" ");
+console.log(result);
+
+
+//make single array:
+const arrA = [1,3,4,5];
+const arrB = [1,2,5,6,7];
+
+const combinedUniqueArray = [...new Set([...arrA, ...arrB])];
+console.log(combinedUniqueArray);
+
+//make sequence:
+const combined = [...new Set([...arrA, ...arrB])];
+
+// Step 3: Sort the array to ensure it's in sequence
+const sequencedArray = combined.sort((a, b) => a - b);
+
+console.log(sequencedArray);
