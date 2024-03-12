@@ -257,13 +257,32 @@ console.log(result);
 const arrA = [1,3,4,5];
 const arrB = [1,2,5,6,7];
 
-const combinedUniqueArray = [...new Set([...arrA, ...arrB])];
-console.log(combinedUniqueArray);
 
 //make sequence:
 const combined = [...new Set([...arrA, ...arrB])];
-
+console.log(combined);
 // Step 3: Sort the array to ensure it's in sequence
 const sequencedArray = combined.sort((a, b) => a - b);
 
 console.log(sequencedArray);
+
+
+//output:
+let x=0;
+console.log(x++);  //0
+
+console.log(++x); //2
+console.log(x);  //2
+
+//flat an array and remove duplicate and make it sequence:
+var arry =[1,[2,3],[1,3,5,4]];
+
+let flatArray = [].concat(...arry);
+
+console.log(flatArray);
+
+let unique = [...new Set(flatArray)];
+console.log(unique);
+
+let sequence = unique.sort((a,b)=>a-b);
+console.log(sequence);

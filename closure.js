@@ -39,3 +39,24 @@ function outer(){
     return inner();
     }
     outer();
+
+    //closure of add and multiply:
+    function mul(a) {
+      return function(b) {
+        return function(c) {
+          return a + b + c;
+        };
+      };
+    }
+    
+    console.log(mul(2)(3)(4));
+
+//create function to do the same to get output 16
+function createBase(value){
+  return function(n){
+   return value + n;
+  }
+ }
+ 
+ var addSix = createBase(6);
+ console.log(addSix(10));

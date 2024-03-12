@@ -20,13 +20,17 @@ function reverse(arr){
     }
     console.log(reverse([2,3,4,5,6,7,8,9]));
 
-
+    //reverse the array
+    let array1 = [12345];
+    let reversedValue = parseInt(arr[0].toString().split('').reverse().join(''));
+    
+    console.log(reversedValue);
 
 
 // adding values in array (reduce method)
 let arr1 = [1,2,3,4,5,6];
 
-let sum = arr1.reduce((accumulator , currentValue) => accumulator + currentValue, 0 )
+let sum = arr1.reduce((accumulator , currentValue) => accumulator + currentValue)
 console.log(sum);
 
 
@@ -91,7 +95,7 @@ console.log(doubledChars);
 const digits = [9, 8, 7, 6, 5, 4, 3, 2, 1];
 
 for (const index in digits) {
-  console.log(index);
+  console.log(index +":"+digits[index]);
 }
 
 const colors = ["Red", "Green", "Blue"];
@@ -114,7 +118,12 @@ for (const character of greeting) {
   console.log(character);
 }   
 
+//show the position of index
+const greetings = "Hello";
 
+for (const index in greeting) {
+  console.log(index + ": " + greetings[index]);
+}
 
 //find second largest number in js:
 let arr2 =[2,5,6,75,7,8];
@@ -157,6 +166,23 @@ function secondBig(arr){
   const second = secondBig(arra);
   console.log(second);
 
+//find first largest:
+var arr4 = [2,8,5,7,3];
+
+function largest(arr){
+    let first = arr[0];
+    let second = -Infinity;
+    for (let i=0;i < arr.length +1 ; i++){
+    if(arr[i]> first){
+        second = first;
+        first = arr[i];
+    }
+    
+    }
+    return first;
+}
+
+console.log(largest(arr));
 
   //find all the missing values;
   const ar = [22, 23, 25, 28, 48];

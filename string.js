@@ -43,3 +43,25 @@ let message = greeting + name + punctuation // "Hello, John!"
      //or
   let message2 = `${greeting}${name}${punctuation}${value}`; // "Hello, World!"
   console.log(combinedString);
+
+
+//remove duplicate:
+const str = "big black bug bit a big black dog on his big black nose";
+
+const words = str.split(" ");
+const uniqueWords = new Set(words);
+const result = [...uniqueWords].join(" ");
+console.log(result);
+
+//reverse string;
+
+
+function reverse(str){
+  let words = str.split(" ");
+  words.reverse();
+  let value = words.join(" ")
+  return value;
+}
+var string = "name my is khan";
+let result1 = reverse(string);
+console.log(result1);
