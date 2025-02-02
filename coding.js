@@ -161,7 +161,7 @@ males.forEach(male => {
 
 //remove the hidden from the value
 let value = [{name: "arasu", hidden: true}, 
-             {name: "deepak"}, 
+             {name: "deepak"},                             
              {name: "gopi"}];
 
 let fvalues=value.filter(obj => !obj.hidden);

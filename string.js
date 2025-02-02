@@ -57,11 +57,8 @@ console.log(result);
 
 
 function reverse(str){
-  let words = str.split(" ");
-  words.reverse();
-  let value = words.join(" ")
-  return value;
+  let words = str.split(' '); // Split by spaces
+  let reversedWords = words.reverse(); // Reverse the order of words
+  return reversedWords.join(' ');
 }
-var string = "name my is khan";
-let result1 = reverse(string);
-console.log(result1);
+console.log(reverseWords("name my is khan")); 

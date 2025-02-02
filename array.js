@@ -44,9 +44,9 @@ console.log(doubledChars);
 //add the value in arraylist at particular index; (splice method)
 let arrayList = [1, 2, 4, 5];
 let index = 2; // Index where you want to add the value
-let valueToAdd = 3;
+let valueAdd = 3;
 
-arrayList.splice(index, 0, valueToAdd);
+arrayList.splice(index, 0, valueAdd);
 
 console.log(arrayList);
 
@@ -145,73 +145,3 @@ age.forEach(person =>{
     }
 })
 
-
-//using for loop to find second largest value;
-function secondBig(arr){
-  let largest = arr[0];
-  let second = -Infinity;
-  for(let i=1; i<arr.length; i++){
-  if (arr[i] > largest){
-  second = largest;
-  largest = arr[i];
-  } else if(arr[i] < largest && arr[i] > second){
-  second = arr[i];
-  }
-  }
-  return second;
-  
-  }
-  
-  const arra=[10,2,4,5,78,99];
-  const second = secondBig(arra);
-  console.log(second);
-
-//find first largest:
-var arr4 = [2,8,5,7,3];
-
-function largest(arr){
-    let first = arr[0];
-    let second = -Infinity;
-    for (let i=0;i < arr.length +1 ; i++){
-    if(arr[i]> first){
-        second = first;
-        first = arr[i];
-    }
-    
-    }
-    return first;
-}
-
-console.log(largest(arr));
-
-  //find all the missing values;
-  const ar = [22, 23, 25, 28, 48];
-
-  function missingArray(arr){
-  let missingValues = [];
-  
-  for(let i=0; i<arr.length; i++){
-     let start = arr[i];
-     let end = arr[i + 1];
-  
-  for(let j=start+1; j<end; j++){
-    missingValues.push(j);
-  }
-  }
-   return missingValues.length > 0 ? missingValues : 'missed';
-  }
-  
-  console.log(missingArray(ar));
-
-  //find missing array
-  function missingArray(arr){
-    var n = arr.length;
-    var total =((n+2) * (n+1))/2;
-    for(let i=0; i< n; i++){
-    total -=arr[i];
-    }
-    return total;
-    }
-    
-    const ex = [1,2,3,4];
-    console.log(missingArray(ex));

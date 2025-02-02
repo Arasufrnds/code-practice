@@ -286,3 +286,16 @@ console.log(unique);
 
 let sequence = unique.sort((a,b)=>a-b);
 console.log(sequence);
+
+
+//output of program:
+var a=1;
+function b(){
+    a=10;
+    return;
+    function a(){}
+}
+// function a(){}   //op:10
+b();
+
+console.log(a); //o/p 1

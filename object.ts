@@ -50,3 +50,27 @@ class student{
 
 var result = new student;
 console.log(result.getResult());
+
+
+
+//crate a pipe to reverse the string in angular:
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'reverseString'
+})
+export class ReverseStringPipe implements PipeTransform {
+  transform(value: string): string {
+    return value ? value.split('').reverse().join('') : '';
+  }
+}
+
+
+<div>
+  <label for="inputText">Enter Text:</label>
+  <input id="inputText" [(ngModel)]="text" type="text" />
+  <p>Reversed: {{ text | reverseString }}</p>
+</div>
+
+
+
