@@ -317,3 +317,26 @@ let outputArray = rearrangeArray(inputArray);
 console.log(outputArray); 
 
 
+//reverse
+let arr =[1,2,3,45]
+
+let value = arr.slice(-4).sort((a,b)=>b-a);
+console.log(value);
+
+
+//range function
+const range = (start,end) => {
+    let result = [];
+
+    for(let i=start; i <=end; i++){
+        result.push(i);
+    }
+    return result;
+}
+
+console.log(range(1,50))
+
+//alternate range method
+const ranger = (start,end) => {
+    return [...Array(start-end).keys()].map((el)=>el + start);
+}
