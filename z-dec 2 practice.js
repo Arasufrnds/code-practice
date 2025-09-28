@@ -152,3 +152,11 @@ let unique = arr.filter((c,index)=>{
 return arr.indexOf(c)=== index});
 
 console.log(unique);
+
+//currying function
+function add(a){
+    return function(b){
+        return a+b;
+    }
+}
+console.log(add(2)(3))

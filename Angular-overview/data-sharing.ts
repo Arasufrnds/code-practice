@@ -103,3 +103,37 @@ export class ParentComponent {
 }
 
 
+
+
+//sharing service without using dependency injection  :  ans using new class
+// because class having instances so the value is refered to this. keyword
+1. Manually create an instance using new
+
+You can directly import the service class and instantiate it.
+
+Example:
+// my.service.ts
+export class MyService {
+  sayHello() {
+    return 'Hello from MyService!';
+  }
+}
+
+// app.component.ts
+import { Component } from '@angular/core';
+import { MyService } from './my.service';
+
+@Component({
+  selector: 'app-root',
+  template: `<p>{{ message }}</p>`
+})
+export class AppComponent {
+  message: string;
+
+  // ⚠️ Manually creating the service
+  myService = new MyService();
+
+  constructor() {
+    this.message = this.myService.sayHello();
+  }
+}

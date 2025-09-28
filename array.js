@@ -118,6 +118,12 @@ for (const character of greeting) {
   console.log(character);
 }   
 
+const digits1 = [9, 8, 7, 6, 5, 5, 6, 7, 8, 9];
+
+for (const index in digits1) {
+  console.log(index, digits1[index]);
+}
+
 //show the position of index
 const greetings = "Hello";
 
